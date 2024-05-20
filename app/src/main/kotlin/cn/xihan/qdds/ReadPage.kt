@@ -328,9 +328,9 @@ fun PackageParam.readingTimeSpeedFactor(
                                 var endTime2: Long
                                 if ( bookType == 1) {
                                     
-                                    if ( (currentTime + 8 *3600)/3600/24 - (option.lastTime1 + 8 *3600)/3600/24 > 0 ){                                        
+                                    if ( (currentTime + 8 *3600000) / (24*60*60*1000) != (option.lastTime1 + 8 *3600000) / (24*60*60*1000) ){
                                         startTime2 = getStartOfDayTimestamp()
-                                    }else {                                        
+                                    }else {
                                         startTime2 = option.lastTime1                                        
                                     }
                                     endTime2 = startTime2 + totalTime2
@@ -341,7 +341,7 @@ fun PackageParam.readingTimeSpeedFactor(
                                     option.lastTime1 = endTime2
 
                                 }else {
-                                    if ( (currentTime + 8 *3600)/3600/24 - (option.lastTime2 + 8 *3600)/3600/24 > 0 ){
+                                    if ( (currentTime + 8 *3600000) / (24*60*60*1000) != (option.lastTime1 + 8 *3600000) / (24*60*60*1000) ){
                                         startTime2 = getStartOfDayTimestamp()                                        
                                     }else {
                                         startTime2 = option.lastTime2                                                                                
