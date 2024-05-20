@@ -116,7 +116,7 @@ object Option {
      * @suppress Generate Documentation
      */
     val basePath =
-        "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)}/QDHook/QDReader/" + this.javaClass.`package`.name
+        "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)}/QDHook/" + this.javaClass.`package`.name
 
     /**
      * 重定向主题路径
