@@ -323,9 +323,9 @@ fun PackageParam.readingTimeSpeedFactor(
                                 val currentTime = System.currentTimeMillis()
                                 val bookType = it.getParam<Int>("bookType")
                                 val option = optionEntity.readPageOption
-                                val startTime2 = 0                                
-                                val totalTime2 = ((totalTime ?: 10000) * speedFactor)
-                                val endTime2 = 0
+                                var startTime2 = 0
+                                var totalTime2 = ((totalTime ?: 10000) * speedFactor)
+                                var endTime2 = 0
                                 if ( bookType == 1) {
                                     
                                     if ( (currentTime + 8 *3600)/3600/24 - (option.lastTime1 + 8 *3600)/3600/24 > 0 ){                                        
