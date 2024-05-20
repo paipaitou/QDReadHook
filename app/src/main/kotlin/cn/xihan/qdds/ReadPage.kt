@@ -319,16 +319,16 @@ fun PackageParam.readingTimeSpeedFactor(
                         if (list.isNullOrEmpty()) return@after
                         list.forEach { item ->
                             item?.let {
-                                val totalTime = it.getParam<Long>("totalTime")
-                                val currentTime = System.currentTimeMillis()
-                                val bookType = it.getParam<Int>("bookType")
+                                var totalTime = it.getParam<Long>("totalTime")
+                                var currentTime = System.currentTimeMillis()
+                                var bookType = it.getParam<Int>("bookType")
                                 val option = optionEntity.readPageOption
                                 var startTime2: Long
                                 var totalTime2 = ((totalTime ?: 10000) * speedFactor)
                                 var endTime2: Long
                                 if ( bookType == 1) {
                                     
-                                    if ( (currentTime + 8 *3600000) / (24*60*60*1000) != (option.lastTime1 + 8 *3600000) / (24*60*60*1000) ){
+                                    if ( option.lastTime1 == 0 | (currentTime + 8 *3600000) / (24*60*60*1000) != (option.lastTime1 + 8 *3600000) / (24*60*60*1000) ){
                                         startTime2 = getStartOfDayTimestamp()
                                     }else {
                                         startTime2 = option.lastTime1                                        
@@ -341,10 +341,10 @@ fun PackageParam.readingTimeSpeedFactor(
                                     option.lastTime1 = endTime2
 
                                 }else {
-                                    if ( (currentTime + 8 *3600000) / (24*60*60*1000) != (option.lastTime1 + 8 *3600000) / (24*60*60*1000) ){
+                                    if ( option.lastTime2 ==0 | (currentTime + 8 *3600000) / (24*60*60*1000) != (option.lastTime2 + 8 *3600000) / (24*60*60*1000) ){
                                         startTime2 = getStartOfDayTimestamp()                                        
                                     }else {
-                                        startTime2 = option.lastTime2                                                                                
+                                        startTime2 = option.lastTime2
                                     }
                                     endTime2 = startTime2 + totalTime2
                                     if( endTime2 >= currentTime ) {
