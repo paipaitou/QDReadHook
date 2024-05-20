@@ -16,6 +16,11 @@ import com.highcapable.yukihookapi.hook.type.java.UnitType
 import org.luckypray.dexkit.DexKitBridge
 import java.io.File
 import java.lang.reflect.Modifier
+import java.util.Calendar;
+import cn.xihan.qdds.Option.optionEntity
+import cn.xihan.qdds.Option.updateOptionEntity
+
+
 
 /**
  * # 重定向阅读页背景路径
@@ -269,6 +274,15 @@ private fun Context.audioExportDialog(networkUrl: String, filePath: String) {
 
 }
 
+fun getStartOfDayTimestamp(): Long {
+    val calendar = Calendar.getInstance()
+    calendar.set(Calendar.HOUR_OF_DAY, 0)
+    calendar.set(Calendar.MINUTE, 0)
+    calendar.set(Calendar.SECOND, 0)
+    calendar.set(Calendar.MILLISECOND, 0)
+    return calendar.timeInMillis
+}
+
 /**
  * 阅读时间加倍
  * * 随缘生效,默认为5倍,建议倍速不要太大，开大了到时候号没了后果自负
@@ -307,13 +321,44 @@ fun PackageParam.readingTimeSpeedFactor(
                             item?.let {
                                 val totalTime = it.getParam<Long>("totalTime")
                                 val currentTime = System.currentTimeMillis()
-                                val startTime2 = currentTime - ((totalTime ?: 10000) * speedFactor)
+                                val bookType = it.getParam<Int>("bookType")
+                                val option = optionEntity.readPageOption
+                                val startTime2 = 0                                
+                                val totalTime2 = ((totalTime ?: 10000) * speedFactor)
+                                val endTime2 = 0
+                                if ( bookType == 1) {
+                                    
+                                    if ( (currentTime + 8 *3600)/3600/24 - (option.lastTime1 + 8 *3600)/3600/24 > 0 ){                                        
+                                        startTime2 = getStartOfDayTimestamp()
+                                    }else {                                        
+                                        startTime2 = option.lastTime1                                        
+                                    }
+                                    endTime2 = startTime2 + totalTime2
+                                    if( endTime2 >= currentTime ) {
+                                        endTime2 = currentTime
+                                        totalTime2 = endTime2 - startTime2
+                                    }
+                                    option.lastTime1 = endTime2
+
+                                }else {
+                                    if ( (currentTime + 8 *3600)/3600/24 - (option.lastTime2 + 8 *3600)/3600/24 > 0 ){
+                                        startTime2 = getStartOfDayTimestamp()                                        
+                                    }else {
+                                        startTime2 = option.lastTime2                                                                                
+                                    }
+                                    endTime2 = startTime2 + totalTime2
+                                    if( endTime2 >= currentTime ) {
+                                        endTime2 = currentTime
+                                        totalTime2 = endTime2 - startTime2
+                                    }
+                                    option.lastTime2 = endTime2
+                                }
                                 it.setParams(
                                     "startTime" to startTime2,
-                                    "endTime" to currentTime,
-                                    "totalTime" to (currentTime - startTime2),
-                                    "chapterVIP" to 1
+                                    "endTime" to endTime2,
+                                    "totalTime" to totalTime2
                                 )
+                                updateOptionEntity()
                             }
                         }
                     }

@@ -116,7 +116,7 @@ object Option {
      * @suppress Generate Documentation
      */
     val basePath =
-        "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)}/QDReader"
+        "${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)}/QDHook/QDReader/" + getName()
 
     /**
      * 重定向主题路径
@@ -510,7 +510,7 @@ data class OptionEntity(
         SelectedModel("主页-书架浮窗活动", true),
         SelectedModel("主页-书架底部导航栏广告", true),
         SelectedModel("我-中间广告", true),
-        SelectedModel("阅读页-浮窗广告", true),
+        SelectedModel("阅读页-浮窗广告"),
 //        SelectedModel("阅读页-打赏小剧场"),
         SelectedModel("阅读页-章末一刀切"),
         SelectedModel("阅读页-章末新人推书"),
@@ -598,7 +598,7 @@ data class OptionEntity(
     data class MainOption(
         var packageName: String = "com.qidian.QDReader",
         var enablePostToShowImageUrl: Boolean = false,
-        var enableFreeAdReward: Boolean = false,
+        var enableFreeAdReward: Boolean = true,
         var enableIgnoreFreeSubscribeLimit: Boolean = false,
         var enableUnlockMemberBackground: Boolean = false,
         var enableHideAppIcon: Boolean = false,
@@ -705,7 +705,10 @@ data class OptionEntity(
         var enableCopyReaderPageChapterComment: Boolean = false,
         var enableCustomFont: Boolean = true,
         var enableReadTimeFactor: Boolean = false,
+        var lastTime1: Long = 0,
+        var lastTime2: Long = 0,
         var speedFactor: Int = 5
+        
     )
 
     /**
