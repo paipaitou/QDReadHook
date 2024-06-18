@@ -248,7 +248,7 @@ object Option {
                 val jb = iterator.next().toJSONString().parseObject()
                 val bookName =
                     jb.getStringWithFallback("bookName") ?: jb.getStringWithFallback("itemName")
-                val authorName = jb.getStringWithFallback("authorName")
+                val authorName = jb.getStringWithFallback("authorName") ?: jb.getStringWithFallback("author")
                 val categoryName = jb.getStringWithFallback("categoryName")
                 val subCategoryName = jb.getStringWithFallback("subCategoryName")
                     ?: jb.getStringWithFallback("itemSubName")
@@ -503,7 +503,7 @@ data class OptionEntity(
     var latestDisclaimersVersionCode: Int = 3,
     var advOption: List<SelectedModel> = listOf(
         SelectedModel("闪屏广告", true),
-        SelectedModel("GDT广告", false),
+        SelectedModel("GDT广告"),
         SelectedModel("主页-每日阅读广告", true),
         SelectedModel("主页-书架顶部广告", true),
         SelectedModel("主页-书架活动弹框", true),
@@ -530,6 +530,7 @@ data class OptionEntity(
     var readPageOption: ReadPageOption = ReadPageOption(),
     var interceptOption: List<SelectedModel> = listOf(
         SelectedModel("检测更新", true),
+        SelectedModel("部分环境检测", true),
         SelectedModel("隐私政策更新弹框", true),
         SelectedModel("同意隐私政策弹框", true),
         SelectedModel("WebSocket", true),
@@ -591,6 +592,7 @@ data class OptionEntity(
      * @param enableHideAppIcon 启用隐藏应用图标
      * @param enableExportEmoji 启用导出表情包
      * @param enableOldDailyRead 启用旧的每日阅读
+     * @param enableStartCheckingPermissions 启用检查权限
      * @param enableCustomIMEI 启用自定义IMEI
      * @param enableFixDouYinShare 启用修复抖音分享
      */
