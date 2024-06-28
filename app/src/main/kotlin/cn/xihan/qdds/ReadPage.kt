@@ -356,7 +356,7 @@ fun PackageParam.readingTimeSpeedFactor(
                                     "startTime" to startTime2,
                                     "endTime" to endTime2,
                                     "totalTime" to totalTime2,
-                                    "chapterVIP" to 1
+                                    "chapterVIP" to 1 
                                 )
                                 updateOptionEntity()
                             }
