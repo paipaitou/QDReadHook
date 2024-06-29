@@ -58,7 +58,7 @@ fun PackageParam.shieldDailyReading(
     versionCode: Int, bridge: DexKitBridge
 ) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.apply {
                 findClass {
@@ -141,7 +141,7 @@ fun PackageParam.shieldDailyReading(
  */
 fun PackageParam.shieldMainPage(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             shieldResult(
                 className = "com.qidian.QDReader.repository.entity.BookListData",
                 methodName = "getItems"
@@ -159,7 +159,7 @@ fun PackageParam.shieldMainPage(versionCode: Int) {
  */
 fun PackageParam.shieldCategory(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.ui.adapter")
@@ -212,7 +212,7 @@ fun PackageParam.shieldCategory(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.shieldCategoryAllBook(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.ui.fragment")
@@ -258,7 +258,7 @@ fun PackageParam.shieldCategoryAllBook(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.shieldFreeRecommend(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 excludePackages = listOf("com")
@@ -311,7 +311,7 @@ fun PackageParam.shieldFreeRecommend(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.shieldNewBook(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.adapter.newbook.BookTagViewHolder".toClass().method {
                 name = "updateUI"
                 param("com.qidian.QDReader.repository.entity.newbook.NewBookCard".toClass())
@@ -386,7 +386,7 @@ fun PackageParam.shieldNewBook(versionCode: Int) {
  */
 fun PackageParam.shieldFreeNewBook(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             val list = listOf(
                 "com.qidian.QDReader.ui.fragment.QDNewBookInStoreFragment",
                 "com.qidian.QDReader.ui.activity.QDNewBookInStoreActivity"
@@ -426,7 +426,7 @@ fun PackageParam.shieldFreeNewBook(versionCode: Int) {
  */
 fun PackageParam.shieldHotAndRecommend(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.ui.adapter")
@@ -465,7 +465,7 @@ fun PackageParam.shieldHotAndRecommend(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.shieldNewBookAndRecommend(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.ui.adapter")
@@ -552,7 +552,7 @@ fun PackageParam.shieldNewBookAndRecommend(versionCode: Int, bridge: DexKitBridg
  */
 fun PackageParam.shieldBookRank(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             shieldResult(
                 className = "com.qidian.QDReader.repository.entity.RankListData",
                 methodName = "getRankBookList"
@@ -570,7 +570,7 @@ fun PackageParam.shieldBookRank(versionCode: Int) {
  */
 fun PackageParam.shieldCategoryBookListReborn(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.view.BookItemView".toClass().method {
                 param(JSONArrayClass)
                 returnType = ListClass
@@ -592,7 +592,7 @@ fun PackageParam.shieldCategoryBookListReborn(versionCode: Int) {
  */
 fun PackageParam.shieldComic(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.repository.entity.ComicSquareItem".toClass().method {
                 name = "getComicSqureRecmdItems"
                 emptyParam()
@@ -615,7 +615,7 @@ fun PackageParam.shieldComic(versionCode: Int) {
  */
 fun PackageParam.shieldComicOther(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.ui.adapter")
@@ -663,7 +663,7 @@ fun PackageParam.shieldComicOther(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.quickShield(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.QDBookDetailActivity".toClass().method {
                 param(
                     "com.qidian.QDReader.ui.activity.QDBookDetailActivity".toClass(),

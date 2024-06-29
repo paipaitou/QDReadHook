@@ -53,7 +53,7 @@ fun PackageParam.searchOption(
     versionCode: Int, configurations: List<SelectedModel>, bridge: DexKitBridge
 ) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             val map = mapOf(
                 "搜索历史" to 1, "搜索发现" to 2, "搜索排行榜" to 3, "为你推荐" to 4
             ).filterKeys { key -> configurations.any { it.selected && it.title == key } }
@@ -103,7 +103,7 @@ fun PackageParam.searchOption(
  */
 fun PackageParam.selectedOption(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             "com.qidian.QDReader.ui.modules.bookstore.BookStoreRebornFragment".toClass().method {
                 name = "updateUI"
@@ -243,7 +243,7 @@ fun PackageParam.selectedOption(versionCode: Int) {
  */
 fun PackageParam.selectedTitleOption(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.fragment.QDStorePagerFragment".toClass().method {
                 name = "onViewInject"
                 param(ViewClass)
@@ -320,7 +320,7 @@ fun PackageParam.selectedTitleOption(versionCode: Int) {
  */
 fun PackageParam.hideMainTopBox(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             intercept(
                 className = "com.qidian.QDReader.ui.activity.MainGroupActivity",
                 methodName = "getGlobalMsg"
@@ -356,7 +356,7 @@ fun PackageParam.hideMainTopPower(versionCode: Int) {
  */
 fun PackageParam.hideBookshelfDailyReading(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             bridge.apply {
                 findClass {
                     matcher {
@@ -406,7 +406,7 @@ fun PackageParam.hideBookshelfDailyReading(versionCode: Int, bridge: DexKitBridg
  */
 fun PackageParam.hideBookshelfTopTitle(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.modules.bookshelf.adapter.BaseBooksAdapter".toClass().method {
                 name = "getHeaderItemCount"
                 emptyParam()
@@ -429,7 +429,7 @@ fun PackageParam.hideBottom(
     bridge: DexKitBridge
 ) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.ui.widget.maintab")
@@ -500,7 +500,7 @@ fun PackageParam.accountViewHide(
     versionCode: Int,
 ) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             "com.qidian.QDReader.ui.fragment.main_group.QDUserAccountRebornFragment".toClass()
                 .method {
@@ -573,7 +573,7 @@ fun PackageParam.accountViewHide(
  */
 fun PackageParam.accountRightTopRedDot(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             returnFalse(
                 className = "com.qidian.QDReader.component.config.QDAppConfigHelper\$Companion",
                 methodName = "isEnableUniteMessage"
@@ -638,7 +638,7 @@ fun PackageParam.bookDetailHide(
     isNeedHideBookRecommend2: Boolean = false,
 ) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.QDBookDetailActivity".toClass().apply {
                 method {
                     name = "notifyData"
@@ -772,7 +772,7 @@ fun PackageParam.bookDetailHide(
  */
 fun PackageParam.hideReadPage(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.readerengine.view.menu")
                 matcher {

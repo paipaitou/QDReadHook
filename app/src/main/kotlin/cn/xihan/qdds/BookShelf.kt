@@ -16,7 +16,7 @@ import com.highcapable.yukihookapi.hook.param.PackageParam
  */
 fun PackageParam.customBookShelfTopImage(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.repository.entity.config.BookshelfConfig".toClass().apply {
 
                 method {

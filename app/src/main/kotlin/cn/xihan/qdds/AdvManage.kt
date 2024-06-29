@@ -54,7 +54,7 @@ fun PackageParam.advOption(
  */
 fun PackageParam.disableDailyReadAd(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.DailyReadingActivity".toClass().method {
                 name = "getADInfo"
                 emptyParam()
@@ -73,7 +73,7 @@ fun PackageParam.disableDailyReadAd(versionCode: Int) {
  */
 fun PackageParam.disableBookshelfActivityPopup(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.MainGroupActivity".toClass().method {
                 name = "doBKTAction"
                 paramCount(1)
@@ -110,7 +110,7 @@ fun PackageParam.disableBookshelfTopAd(versionCode: Int) {
  */
 fun PackageParam.disableBottomNavigationCenterAd(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.MainGroupActivity".toClass().method {
                 name = "checkAdTab"
                 emptyParam()
@@ -128,7 +128,7 @@ fun PackageParam.disableBottomNavigationCenterAd(versionCode: Int) {
  */
 fun PackageParam.disableBookshelfFloatWindow(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.modules.bookshelf.QDBookShelfRebornFragment".toClass().method {
                 name = "updateFloatingAd"
                 emptyParam()
@@ -147,7 +147,7 @@ fun PackageParam.disableBookshelfFloatWindow(versionCode: Int) {
  */
 fun PackageParam.disableAccountCenterAd(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.fragment.main_group.QDUserAccountRebornFragment".toClass()
                 .method {
                     name = "loadADData"
@@ -166,7 +166,7 @@ fun PackageParam.disableAccountCenterAd(versionCode: Int) {
  */
 fun PackageParam.disableReaderPageFloatAd(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.readerengine.view.QDSuperEngineView".toClass().method {
                 name = "setReadMenuData"
                 paramCount(1)
@@ -201,7 +201,7 @@ fun PackageParam.disableReaderPageFloatAd(versionCode: Int) {
  */
 fun PackageParam.disableReaderPageBottom(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.readerengine.view.QDSuperEngineView".toClass().method {
                 name = "initInteractionBarView"
                 returnType = UnitType
@@ -221,7 +221,7 @@ fun PackageParam.disableReaderPageBottom(versionCode: Int) {
  */
 fun PackageParam.disableReadPageRewardTheater(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.chapter.list.NewParagraphCommentListActivity".toClass()
                 .method {
                     name = "getParagraphTip"
@@ -241,7 +241,7 @@ fun PackageParam.disableReadPageRewardTheater(versionCode: Int) {
  */
 fun PackageParam.disableReadPageNewestPageWindowBannerAd(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.bll.manager.QDBKTManager".toClass().method {
                 paramCount(5)
                 returnType = UnitType
@@ -272,7 +272,7 @@ fun PackageParam.disableReadPageChapterEnd(
     disableVoteTicketSpecialLine: Boolean = false
 ) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.readerengine.manager.ChapterProvider".toClass().apply {
 
                 if (disableAll) {
@@ -344,7 +344,7 @@ fun PackageParam.disableReadPageChapterEnd(
  */
 fun PackageParam.disableSplashAd(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.apply {
                 findClass {
@@ -406,7 +406,7 @@ fun PackageParam.disableSplashAd(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.disableGDTAD(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.component.abtest")

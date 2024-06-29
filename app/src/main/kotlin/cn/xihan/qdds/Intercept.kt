@@ -47,7 +47,7 @@ fun PackageParam.interceptOption(
  */
 fun PackageParam.interceptCheckUpdate(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             intercept("com.qidian.QDReader.ui.activity.MainGroupActivity", "checkUpdate")
 
 
@@ -122,7 +122,7 @@ fun PackageParam.interceptCheckEnvironment(versionCode: Int) {
  */
 fun PackageParam.interceptPrivacyPolicy(version: Int) {
     when (version) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             intercept("com.qidian.QDReader.ui.activity.MainGroupActivity", "checkPrivacyVersion")
         }
 
@@ -137,7 +137,7 @@ fun PackageParam.interceptPrivacyPolicy(version: Int) {
  */
 fun PackageParam.interceptAgreePrivacyPolicy(version: Int, bridge: DexKitBridge) {
     when (version) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.util")
@@ -174,7 +174,7 @@ fun PackageParam.interceptAgreePrivacyPolicy(version: Int, bridge: DexKitBridge)
  */
 fun PackageParam.interceptWebSocket(version: Int, bridge: DexKitBridge) {
     when (version) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
 
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.component.msg")
@@ -203,7 +203,7 @@ fun PackageParam.interceptWebSocket(version: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.interceptQSNModeRequest(version: Int) {
     when (version) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.bll.manager.QDTeenagerManager".toClass().method {
                 name = "init"
                 paramCount(1)
@@ -222,7 +222,7 @@ fun PackageParam.interceptQSNModeRequest(version: Int) {
  */
 fun PackageParam.interceptReaderBookPageWaterMark(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             intercept("com.qidian.QDReader.ui.activity.QDReaderActivity", "setWaterMark")
         }
 
@@ -237,7 +237,7 @@ fun PackageParam.interceptReaderBookPageWaterMark(versionCode: Int) {
  */
 fun PackageParam.interceptPostImageWatermark(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.qidian.QDReader.ui.activity.CirclePostEditActivity".toClass().method {
                 name = "addInk2BitmapFile"
                 paramCount(2)
@@ -263,7 +263,7 @@ fun PackageParam.interceptPostImageWatermark(versionCode: Int) {
  */
 fun PackageParam.interceptAutoJumpSelected(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             intercept(
                 className = "com.qidian.QDReader.ui.activity.MainGroupActivity",
                 methodName = "checkOpenView",
@@ -282,7 +282,7 @@ fun PackageParam.interceptAutoJumpSelected(versionCode: Int) {
  */
 fun PackageParam.interceptFirstInstallAnalytics(versionCode: Int) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             intercept(
                 className = "com.qidian.QDReader.ui.activity.MainGroupActivity",
                 methodName = "firstInstallAnalytics"
@@ -299,7 +299,7 @@ fun PackageParam.interceptFirstInstallAnalytics(versionCode: Int) {
  */
 fun PackageParam.interceptAsyncInitTask(versionCode: Int, clsNameList: List<String>) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             "com.rousetime.android_startup.StartupManager".toClass().method {
                 name = "start"
                 emptyParam()
@@ -326,7 +326,7 @@ fun PackageParam.interceptAsyncInitTask(versionCode: Int, clsNameList: List<Stri
  */
 fun PackageParam.interceptQSNYDialog(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..1299 -> {
+        in 1196..9299 -> {
             bridge.findClass {
                 searchPackages = listOf("com.qidian.QDReader.bll.helper")
                 matcher {
