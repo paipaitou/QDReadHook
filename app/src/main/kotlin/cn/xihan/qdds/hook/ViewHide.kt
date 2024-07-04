@@ -354,7 +354,7 @@ fun PackageParam.hideMainTopBox(versionCode: Int) {
  */
 fun PackageParam.hideMainTopPower(versionCode: Int) {
     when (versionCode) {
-        in 878..1499 -> {
+        in 1196..9299 -> {
             intercept(
                 className = "com.qidian.QDReader.ui.activity.MainGroupActivity",
                 methodName = "getFightRankMsg"
@@ -835,7 +835,7 @@ fun PackageParam.hideReadPage(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.hideRedDot(versionCode: Int) {
     when (versionCode) {
-        in 868..1499 -> {
+        in 1196..9299 -> {
             intercept(
                 className = "com.qidian.QDReader.framework.widget.customerview.SmallDotsView",
                 methodName = "onDraw",

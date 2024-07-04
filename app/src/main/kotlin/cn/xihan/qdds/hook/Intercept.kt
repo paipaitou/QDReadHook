@@ -96,7 +96,7 @@ fun PackageParam.interceptCheckUpdate(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.interceptCheckEnvironment(versionCode: Int) {
     when (versionCode) {
-        in 1296..1499 -> {
+        in 1196..9299 -> {
             intercept(
                 "com.qidian.QDReader.QDApplication",
                 "t"

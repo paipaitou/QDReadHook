@@ -79,8 +79,7 @@ fun PackageParam.disableDailyReadAd(versionCode: Int) {
  */
 fun PackageParam.disableBookshelfActivityPopup(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
-        in 1296..1499 -> {
+        in 1196..9299 -> {        
             "com.qidian.QDReader.ui.activity.MainGroupActivity".toClass().method {
                 name = "doBKTAction"
                 paramCount(1)
@@ -99,7 +98,7 @@ fun PackageParam.disableBookshelfActivityPopup(versionCode: Int) {
  */
 fun PackageParam.disableBookshelfTopAd(versionCode: Int) {
     when (versionCode) {
-        in 1086..1499 -> {
+        in 1196..9299 -> {
             intercept(
                 className = "com.qidian.QDReader.ui.modules.bookshelf.BookShelfOperationManager",
                 methodName = "getBookShelfOperationRes"
