@@ -1,5 +1,9 @@
-package cn.xihan.qdds
+package cn.xihan.qdds.hook
 
+import cn.xihan.qdds.util.SelectedModel
+import cn.xihan.qdds.util.getParam
+import cn.xihan.qdds.util.intercept
+import cn.xihan.qdds.util.printlnNotSupportVersion
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.param.PackageParam
 import com.highcapable.yukihookapi.hook.type.java.StringClass
@@ -10,7 +14,7 @@ import java.lang.reflect.Modifier
 
 /**
  * 拦截选项
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  * @param [configurations] 配置
  * @suppress Generate Documentation
@@ -42,7 +46,7 @@ fun PackageParam.interceptOption(
 
 /**
  * 拦截检测更新
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.interceptCheckUpdate(versionCode: Int, bridge: DexKitBridge) {
@@ -86,13 +90,13 @@ fun PackageParam.interceptCheckUpdate(versionCode: Int, bridge: DexKitBridge) {
 
 /**
  * 部分环境检测
- * @since 7.9.352-1286 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  * 可拦截启动时签名校验、环境检测、上报设备信息
  */
 fun PackageParam.interceptCheckEnvironment(versionCode: Int) {
     when (versionCode) {
-        in 1286..1299 -> {
+        in 1296..1499 -> {
             intercept(
                 "com.qidian.QDReader.QDApplication",
                 "t"
@@ -117,7 +121,7 @@ fun PackageParam.interceptCheckEnvironment(versionCode: Int) {
 
 /**
  * 拦截隐私策略
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [version] 版本
  */
 fun PackageParam.interceptPrivacyPolicy(version: Int) {
@@ -132,7 +136,7 @@ fun PackageParam.interceptPrivacyPolicy(version: Int) {
 
 /**
  * 拦截同意隐私政策弹框
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [version] 版本
  */
 fun PackageParam.interceptAgreePrivacyPolicy(version: Int, bridge: DexKitBridge) {
@@ -169,7 +173,7 @@ fun PackageParam.interceptAgreePrivacyPolicy(version: Int, bridge: DexKitBridge)
 
 /**
  * 拦截WebSocket
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [version] 版本
  */
 fun PackageParam.interceptWebSocket(version: Int, bridge: DexKitBridge) {
@@ -198,7 +202,7 @@ fun PackageParam.interceptWebSocket(version: Int, bridge: DexKitBridge) {
 
 /**
  * 拦截青少年模式请求
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [version] 版本
  */
 fun PackageParam.interceptQSNModeRequest(version: Int) {
@@ -217,7 +221,7 @@ fun PackageParam.interceptQSNModeRequest(version: Int) {
 
 /**
  * 拦截阅读页水印
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.interceptReaderBookPageWaterMark(versionCode: Int) {
@@ -232,7 +236,7 @@ fun PackageParam.interceptReaderBookPageWaterMark(versionCode: Int) {
 
 /**
  * 拦截发帖图片水印
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.interceptPostImageWatermark(versionCode: Int) {
@@ -258,7 +262,7 @@ fun PackageParam.interceptPostImageWatermark(versionCode: Int) {
 
 /**
  * 拦截自动跳转精选
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.interceptAutoJumpSelected(versionCode: Int) {
@@ -277,7 +281,7 @@ fun PackageParam.interceptAutoJumpSelected(versionCode: Int) {
 
 /**
  * 拦截首次安装分析
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.interceptFirstInstallAnalytics(versionCode: Int) {
@@ -295,7 +299,7 @@ fun PackageParam.interceptFirstInstallAnalytics(versionCode: Int) {
 
 /**
  * 拦截异步初始化任务
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  */
 fun PackageParam.interceptAsyncInitTask(versionCode: Int, clsNameList: List<String>) {
     when (versionCode) {
@@ -321,7 +325,7 @@ fun PackageParam.interceptAsyncInitTask(versionCode: Int, clsNameList: List<Stri
 
 /**
  * 拦截青少年模式弹框
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [versionCode] 版本代码
  */
 fun PackageParam.interceptQSNYDialog(versionCode: Int, bridge: DexKitBridge) {
