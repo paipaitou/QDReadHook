@@ -1,4 +1,11 @@
 # Changelog
+## [3.1.8](https://github.com/paipaitou/QDReadHook/compare/v3.1.7...v3.1.8) (2024-07-04)
+
+
+### Miscellaneous
+
+* **master:** release 3.1.7 ([63460ee](https://github.com/paipaitou/QDReadHook/commit/63460ee3bfa646ddd6c3df198ade2e21c5b948ce))
+
 ## [3.1.8](https://github.com/xihan123/QDReadHook/compare/v3.1.7...v3.1.8) (2024-06-30)
 
 
