@@ -1,4 +1,4 @@
-package cn.xihan.qdds
+package cn.xihan.qdds.hook
 
 import android.app.Activity
 import android.content.Context
@@ -6,10 +6,32 @@ import android.content.Intent
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
-import cn.xihan.qdds.Option.optionEntity
-import cn.xihan.qdds.Option.picturesPath
-import cn.xihan.qdds.Option.updateOptionEntity
-import cn.xihan.qdds.Option.writeTextFile
+import cn.xihan.qdds.BuildConfig
+import cn.xihan.qdds.ui.MainActivity
+import cn.xihan.qdds.util.CustomEditText
+import cn.xihan.qdds.util.Option
+import cn.xihan.qdds.util.Option.optionEntity
+import cn.xihan.qdds.util.Option.picturesPath
+import cn.xihan.qdds.util.Option.updateOptionEntity
+import cn.xihan.qdds.util.Option.writeTextFile
+import cn.xihan.qdds.util.alertDialog
+import cn.xihan.qdds.util.appModule
+import cn.xihan.qdds.util.copyToClipboard
+import cn.xihan.qdds.util.getName
+import cn.xihan.qdds.util.getParam
+import cn.xihan.qdds.util.getParamList
+import cn.xihan.qdds.util.getSystemContext
+import cn.xihan.qdds.util.getVersionCode
+import cn.xihan.qdds.util.getView
+import cn.xihan.qdds.util.getViews
+import cn.xihan.qdds.util.isSelectedByTitle
+import cn.xihan.qdds.util.loge
+import cn.xihan.qdds.util.okButton
+import cn.xihan.qdds.util.printlnNotSupportVersion
+import cn.xihan.qdds.util.requestPermissionDialog
+import cn.xihan.qdds.util.safeCast
+import cn.xihan.qdds.util.setParams
+import cn.xihan.qdds.util.toast
 import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.annotation.xposed.InjectYukiHookWithXposed
 import com.highcapable.yukihookapi.hook.factory.method
@@ -28,6 +50,11 @@ import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
 import org.json.JSONObject
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.component.KoinComponent
+import org.koin.core.context.startKoin
+import org.koin.core.lazyModules
 import org.luckypray.dexkit.DexKitBridge
 import java.io.File
 import java.lang.reflect.Modifier
@@ -41,7 +68,7 @@ import java.lang.reflect.Modifier
  * @suppress Generate Documentation
  */
 @InjectYukiHookWithXposed
-class HookEntry : IYukiHookXposedInit {
+class HookEntry : IYukiHookXposedInit, KoinComponent {
 
     init {
         if (optionEntity.allowDisclaimers) {
@@ -59,9 +86,13 @@ class HookEntry : IYukiHookXposedInit {
     override fun onHook() = YukiHookAPI.encase {
         if ("com.qidian.QDReader" !in packageName) return@encase
         loadApp(name = packageName) {
-
             onAppLifecycle {
                 onCreate {
+                    startKoin {
+                        androidLogger()
+                        androidContext(this@onCreate)
+                        lazyModules(appModule)
+                    }
                     Option.initialize(this)
                 }
             }
@@ -316,7 +347,7 @@ class HookEntry : IYukiHookXposedInit {
 
 /**
  * 开始检查权限
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [versionCode] 版本代码
  * @suppress Generate Documentation
  */
@@ -371,7 +402,7 @@ fun PackageParam.startCheckingPermissions(versionCode: Int) {
 
 /**
  * 解锁会员卡专属背景
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.unlockMemberBackground(versionCode: Int) {
@@ -404,7 +435,7 @@ fun PackageParam.unlockMemberBackground(versionCode: Int) {
 
 /**
  * 免广告领取奖励
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.freeAdReward(versionCode: Int) {
@@ -452,7 +483,7 @@ fun PackageParam.freeAdReward(versionCode: Int) {
 
 /**
  * 忽略限免批量订阅限制
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.ignoreFreeSubscribeLimit(versionCode: Int, bridge: DexKitBridge) {
@@ -506,7 +537,7 @@ fun PackageParam.ignoreFreeSubscribeLimit(versionCode: Int, bridge: DexKitBridge
 
 /**
  * 一键导出表情包
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.exportEmoji(versionCode: Int) {
@@ -571,7 +602,7 @@ fun PackageParam.exportEmoji(versionCode: Int) {
 
 /**
  * 导出表情符号对话框
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [context] 上下文
  * @param [yWImageLoader] Y wimage装载机
  * @param [imageList] 图像列表
@@ -606,7 +637,7 @@ private fun Context.exportEmojiDialog(
 
 /**
  * 发帖显示图片直链
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.postToShowImageUrl(versionCode: Int, bridge: DexKitBridge) {
@@ -651,7 +682,7 @@ fun PackageParam.postToShowImageUrl(versionCode: Int, bridge: DexKitBridge) {
 
 /**
  * “显示url列表”对话框
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [urls] url
  * @suppress Generate Documentation
  */
@@ -672,7 +703,7 @@ private fun Context.showUrlListDialog(urls: List<String>) {
 
 /**
  * 启用旧版每日导读
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.oldDailyRead(versionCode: Int, bridge: DexKitBridge) {
@@ -718,7 +749,7 @@ fun PackageParam.oldDailyRead(versionCode: Int, bridge: DexKitBridge) {
 
 /**
  * 启用自定义imei
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.customIMEI(versionCode: Int, bridge: DexKitBridge) {
@@ -858,7 +889,7 @@ fun PackageParam.debug(versionCode: Int, bridge: DexKitBridge) {
  * 修复抖音分享
  * @param versionCode Int
  * @param bridge DexKitBridge
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  *
  */
 fun PackageParam.fixDouYinShare(versionCode: Int, bridge: DexKitBridge) {

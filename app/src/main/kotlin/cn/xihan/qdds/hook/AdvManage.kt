@@ -1,6 +1,13 @@
-package cn.xihan.qdds
+package cn.xihan.qdds.hook
 
 import android.widget.LinearLayout
+import cn.xihan.qdds.util.SelectedModel
+import cn.xihan.qdds.util.getView
+import cn.xihan.qdds.util.intercept
+import cn.xihan.qdds.util.isSelectedByTitle
+import cn.xihan.qdds.util.printlnNotSupportVersion
+import cn.xihan.qdds.util.returnFalse
+import cn.xihan.qdds.util.setVisibilityIfNotEqual
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.param.PackageParam
 import com.highcapable.yukihookapi.hook.type.java.UnitType
@@ -9,7 +16,7 @@ import java.lang.reflect.Modifier
 
 /**
  * 广告相关功能
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  * @param [configurations] 配置
  * @suppress Generate Documentation
@@ -25,7 +32,7 @@ fun PackageParam.advOption(
             "GDT广告" -> disableGDTAD(versionCode, bridge)
             "主页-每日阅读广告" -> disableDailyReadAd(versionCode)
             "主页-书架活动弹框" -> disableBookshelfActivityPopup(versionCode)
-            "主页-书架顶部广告" ->   disableBookshelfTopAd(versionCode)
+            "主页-书架顶部广告" -> disableBookshelfTopAd(versionCode)
             "主页-书架浮窗活动" -> disableBookshelfFloatWindow(versionCode)
             "主页-书架底部导航栏广告" -> disableBottomNavigationCenterAd(versionCode)
             "我-中间广告" -> disableAccountCenterAd(versionCode)
@@ -41,15 +48,14 @@ fun PackageParam.advOption(
         disableAll = configurations.isSelectedByTitle("阅读页-章末一刀切"),
         disableBookRecommend = configurations.isSelectedByTitle("阅读页-章末新人推书"),
         disableBookComment = configurations.isSelectedByTitle("阅读页-章末本章说"),
-        disableChapterEndWelfare = configurations.isSelectedByTitle("阅读页-章末福利"),
-        disableChapterEndRewardAd = configurations.isSelectedByTitle("阅读页-章末广告"),
+        disableChapterEndWelfare = configurations.isSelectedByTitle("阅读页-互动区/章末福利/激励视频"),
         disableVoteTicketSpecialLine = configurations.isSelectedByTitle("阅读页-章末求票")
     )
 }
 
 /**
  * 禁用每日导读广告
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本号
  */
 fun PackageParam.disableDailyReadAd(versionCode: Int) {
@@ -69,6 +75,7 @@ fun PackageParam.disableDailyReadAd(versionCode: Int) {
 /**
  * 禁用书架活动弹出窗口
  * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableBookshelfActivityPopup(versionCode: Int) {
@@ -87,12 +94,12 @@ fun PackageParam.disableBookshelfActivityPopup(versionCode: Int) {
 
 /**
  * 禁用书架顶部广告
- * @since 7.9.306-1086 ~ 1299
+ * @since 7.9.306-1086 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableBookshelfTopAd(versionCode: Int) {
     when (versionCode) {
-        in 1086..1299 -> {
+        in 1086..1499 -> {
             intercept(
                 className = "com.qidian.QDReader.ui.modules.bookshelf.BookShelfOperationManager",
                 methodName = "getBookShelfOperationRes"
@@ -105,7 +112,7 @@ fun PackageParam.disableBookshelfTopAd(versionCode: Int) {
 
 /**
  * 禁用底部导航中心广告
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableBottomNavigationCenterAd(versionCode: Int) {
@@ -142,7 +149,7 @@ fun PackageParam.disableBookshelfFloatWindow(versionCode: Int) {
 
 /**
  * 禁用我-中心广告
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableAccountCenterAd(versionCode: Int) {
@@ -161,7 +168,7 @@ fun PackageParam.disableAccountCenterAd(versionCode: Int) {
 
 /**
  * 禁用阅读页面浮动广告
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableReaderPageFloatAd(versionCode: Int) {
@@ -196,7 +203,7 @@ fun PackageParam.disableReaderPageFloatAd(versionCode: Int) {
 
 /**
  * 禁用阅读页面底部月票打赏红包
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableReaderPageBottom(versionCode: Int) {
@@ -216,7 +223,7 @@ fun PackageParam.disableReaderPageBottom(versionCode: Int) {
 
 /**
  * 禁用阅读页面打赏剧场
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableReadPageRewardTheater(versionCode: Int) {
@@ -236,7 +243,7 @@ fun PackageParam.disableReadPageRewardTheater(versionCode: Int) {
 
 /**
  * 禁用阅读页面最新页面窗口横幅广告
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableReadPageNewestPageWindowBannerAd(versionCode: Int) {
@@ -252,13 +259,12 @@ fun PackageParam.disableReadPageNewestPageWindowBannerAd(versionCode: Int) {
 
 /**
  * 禁用阅读页-章末相关广告
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  * @param [disableAll] 一刀切
  * @param [disableBookRecommend] 禁用推荐书籍
  * @param [disableBookComment] 禁用本章说
  * @param [disableChapterEndWelfare] 禁用章末福利
- * @param [disableChapterEndRewardAd] 禁用章末广告
  * @param [disableVoteTicketSpecialLine] 禁用章末求票
  * @suppress Generate Documentation
  */
@@ -268,7 +274,6 @@ fun PackageParam.disableReadPageChapterEnd(
     disableBookRecommend: Boolean = false,
     disableBookComment: Boolean = false,
     disableChapterEndWelfare: Boolean = false,
-    disableChapterEndRewardAd: Boolean = false,
     disableVoteTicketSpecialLine: Boolean = false
 ) {
     when (versionCode) {
@@ -307,17 +312,8 @@ fun PackageParam.disableReadPageChapterEnd(
                      * 章末福利 insertChapterEndWelfare
                      */
                     method {
-                        name = "insertChapterEndWelfare"
-                        returnType = UnitType
-                    }.hook().intercept()
-                }
-                if (disableChapterEndRewardAd) {
-                    /**
-                     * 章末广告 insertRewardAd
-                     */
-                    method {
-                        name = "insertRewardAd"
-                        returnType = UnitType
+                        name = "getChapterEndSpan"
+                        paramCount(2)
                     }.hook().intercept()
                 }
                 if (disableVoteTicketSpecialLine) {
@@ -339,7 +335,7 @@ fun PackageParam.disableReadPageChapterEnd(
 
 /**
  * 禁用闪屏广告
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableSplashAd(versionCode: Int, bridge: DexKitBridge) {
@@ -401,7 +397,7 @@ fun PackageParam.disableSplashAd(versionCode: Int, bridge: DexKitBridge) {
 
 /**
  * 禁用GDT广告
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode]
  */
 fun PackageParam.disableGDTAD(versionCode: Int, bridge: DexKitBridge) {

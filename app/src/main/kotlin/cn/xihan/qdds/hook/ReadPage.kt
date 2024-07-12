@@ -1,11 +1,26 @@
-package cn.xihan.qdds
+package cn.xihan.qdds.hook
 
 import android.content.Context
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import cn.xihan.qdds.Option.audioPath
-import cn.xihan.qdds.Option.redirectThemePath
+import cn.xihan.qdds.util.CustomEditText
+import cn.xihan.qdds.util.CustomLinearLayout
+import cn.xihan.qdds.util.CustomTextView
+import cn.xihan.qdds.util.Option
+import cn.xihan.qdds.util.Option.audioPath
+import cn.xihan.qdds.util.Option.redirectThemePath
+import cn.xihan.qdds.util.alertDialog
+import cn.xihan.qdds.util.copyToClipboard
+import cn.xihan.qdds.util.getParam
+import cn.xihan.qdds.util.getParamList
+import cn.xihan.qdds.util.getViews
+import cn.xihan.qdds.util.intercept
+import cn.xihan.qdds.util.printlnNotSupportVersion
+import cn.xihan.qdds.util.safeCast
+import cn.xihan.qdds.util.setParam
+import cn.xihan.qdds.util.setParams
+import cn.xihan.qdds.util.toast
 import com.alibaba.fastjson2.parseObject
 import com.alibaba.fastjson2.toJSONString
 import com.highcapable.yukihookapi.hook.factory.method
@@ -25,7 +40,7 @@ import cn.xihan.qdds.Option.updateOptionEntity
 /**
  * # 重定向阅读页背景路径
  * * 重定向至: /storage/emulated/0/Download/QDReader/ReaderTheme
- * @since 7.9.334-1196 ~ 1099
+ * @since 7.9.354-1296 ~ 1099
  * @param [versionCode] 版本代码
  */
 fun PackageParam.redirectReadingPageBackgroundPath(versionCode: Int, bridge: DexKitBridge) {
@@ -70,7 +85,7 @@ fun PackageParam.redirectReadingPageBackgroundPath(versionCode: Int, bridge: Dex
  * * 在配音条播放成功后长按即会弹出导出对话框
  * * 编辑框的内容是文件名
  * * 导出至 /Sdcard/storage/emulated/0/Download/QDReader/Audio
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  * @param [enableShowReaderPageChapterSaveRawPictures] 启用显示阅读器页面章节保存原始图片
  * @param [enableShowReaderPageChapterSavePictureDialog] 启用显示阅读器页面章节保存图片对话框
@@ -286,7 +301,7 @@ fun getStartOfDayTimestamp(): Long {
 /**
  * 阅读时间加倍
  * * 随缘生效,默认为5倍,建议倍速不要太大，开大了到时候号没了后果自负
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  * @param [speedFactor] 速度系数
  */
@@ -373,7 +388,7 @@ fun PackageParam.readingTimeSpeedFactor(
 
 /**
  * 阅读页最后一页
- * @since 7.9.334-1196
+ * @since 7.9.354-1296
  * @param [versionCode] 版本代码
  * @param [shieldAlsoRead] 屏蔽推荐
  * @param [shieldRecommendation] 屏蔽推荐

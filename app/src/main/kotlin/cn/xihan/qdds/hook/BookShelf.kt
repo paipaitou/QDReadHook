@@ -1,5 +1,10 @@
-package cn.xihan.qdds
+package cn.xihan.qdds.hook
 
+import cn.xihan.qdds.util.Option.optionEntity
+import cn.xihan.qdds.util.OptionEntity
+import cn.xihan.qdds.util.getParam
+import cn.xihan.qdds.util.printlnNotSupportVersion
+import cn.xihan.qdds.util.setParams
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.param.PackageParam
 
@@ -11,7 +16,7 @@ import com.highcapable.yukihookapi.hook.param.PackageParam
  *
  * [地址2](https://imgservices-1252317822.image.myqcloud.com/image/20210507/q2bvc3z5vd.jpg)
  * ## 建议分辨率为 1125*504
- * @since 7.9.334-1196 ~ 1299
+ * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.customBookShelfTopImage(versionCode: Int) {
@@ -25,7 +30,7 @@ fun PackageParam.customBookShelfTopImage(versionCode: Int) {
                     returnType =
                         "com.qidian.QDReader.repository.entity.config.ConfigColors".toClass()
                 }.hook().after {
-                    result?.setDayMode(Option.optionEntity)
+                    result?.setDayMode(optionEntity)
                 }
 
                 method {
@@ -34,10 +39,10 @@ fun PackageParam.customBookShelfTopImage(versionCode: Int) {
                     returnType =
                         "com.qidian.QDReader.repository.entity.config.ConfigColors".toClass()
                 }.hook().after {
-                    if (Option.optionEntity.bookshelfOption.enableSameNightAndDay) {
-                        result?.setDayMode(Option.optionEntity)
+                    if (optionEntity.bookshelfOption.enableSameNightAndDay) {
+                        result?.setDayMode(optionEntity)
                     } else {
-                        result?.setDarkMode(Option.optionEntity)
+                        result?.setDarkMode(optionEntity)
                     }
                 }
             }
