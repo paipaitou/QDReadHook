@@ -32,8 +32,8 @@ import org.luckypray.dexkit.DexKitBridge
 import java.io.File
 import java.lang.reflect.Modifier
 import java.util.Calendar;
-import cn.xihan.qdds.Option.optionEntity
-import cn.xihan.qdds.Option.updateOptionEntity
+import cn.xihan.qdds.util.Option.optionEntity
+import cn.xihan.qdds.util.Option.updateOptionEntity
 
 
 
