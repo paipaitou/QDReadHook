@@ -74,13 +74,13 @@ fun PackageParam.disableDailyReadAd(versionCode: Int) {
 
 /**
  * 禁用书架活动弹出窗口
+ * @since 7.9.334-1196 ~ 1299
  * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
  */
 fun PackageParam.disableBookshelfActivityPopup(versionCode: Int) {
     when (versionCode) {
         in 1196..9299 -> {
-        in 1296..1499 -> {
             "com.qidian.QDReader.ui.activity.MainGroupActivity".toClass().method {
                 name = "doBKTAction"
                 paramCount(1)

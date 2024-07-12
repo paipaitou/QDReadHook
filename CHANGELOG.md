@@ -1,4 +1,56 @@
 # Changelog
+## [3.2.0](https://github.com/xihan123/QDReadHook/compare/v3.1.9...v3.2.0) (2024-07-12)
+
+
+### Features
+
+* **屏蔽设置:** 新增'屏蔽的书字数'功能,目前只测了旧每日导读可用 ([04520f7](https://github.com/xihan123/QDReadHook/commit/04520f72d1d3e6d11e68522ea1c0985c88855c5f))
+* **自动化设置:** 新增`卡牌召唤` ([3883505](https://github.com/xihan123/QDReadHook/commit/388350598132be57bf89af20f358e710679325f4))
+
+
+### Bug Fixes
+
+* WelfareCenterModel类型错误 ([d725db9](https://github.com/xihan123/QDReadHook/commit/d725db987bda3d6ff1eabce32f1b8d1c099ba094))
+* 修复配置文件更新的条件判断 ([1eb3358](https://github.com/xihan123/QDReadHook/commit/1eb33581fabb053173eb7ca70435f47d16415246))
+
+
+### Miscellaneous
+
+* 更新依赖库 ([effc494](https://github.com/xihan123/QDReadHook/commit/effc494a3c6b52329560c421078dcebc44f338b6))
+
+
+### Performance Improvements
+
+* **主设置:** 默认关闭自定义IMEI ([28933a7](https://github.com/xihan123/QDReadHook/commit/28933a7c6fff5f96205f60a9dc7aed703b13a8a9))
+
+## [3.1.9](https://github.com/xihan123/QDReadHook/compare/v3.1.8...v3.1.9) (2024-07-05)
+
+
+### Features
+
+* 添加HTTP非200响应验证器,如果有错误会显示错误信息 ([3a9077f](https://github.com/xihan123/QDReadHook/commit/3a9077f94d8670bbc3004882539d1a8f992fa160))
+
+
+### Bug Fixes
+
+* 修复`领取`按钮灰色逻辑 ([abe4ac6](https://github.com/xihan123/QDReadHook/commit/abe4ac6aecb76ce274c0a2b9ad276e683ecf5521))
+* 修复多开环境权限异常[258]([#258](https://github.com/xihan123/QDReadHook/issues/258)) ([4f6e5d3](https://github.com/xihan123/QDReadHook/commit/4f6e5d39af489c7599058a49c7bd2ab681f610f7))
+
+
+### CI
+
+* 更新构建流程 ([78532ce](https://github.com/xihan123/QDReadHook/commit/78532cebded3fd12897ce057df271a55cf434ad1))
+
+
+### Miscellaneous
+
+* 更新依赖库 ([2dbb70d](https://github.com/xihan123/QDReadHook/commit/2dbb70d503e8a6b0a71523a8062832b85a9444c2))
+
+
+### Performance Improvements
+
+* **About:** 关于页面元素显示不全可滑动 ([3980992](https://github.com/xihan123/QDReadHook/commit/398099289c5b55d551ade122006816c5f4c18367))
+
 ## [3.1.8](https://github.com/xihan123/QDReadHook/compare/v3.1.7...v3.1.8) (2024-06-30)
 
 
