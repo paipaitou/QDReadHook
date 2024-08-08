@@ -759,7 +759,7 @@ fun PackageParam.oldDailyRead(versionCode: Int, bridge: DexKitBridge) {
  */
 fun PackageParam.newDiscoveryPage(versionCode: Int, enabled: Boolean = false) {
     when (versionCode) {
-        in 1296..1499 -> {
+        in 1296..9299 -> {
             "com.qidian.QDReader.repository.entity.config.AppConfigBean".toClass().method {
                 name = "getNewFeedsDiscover"
                 emptyParam()
