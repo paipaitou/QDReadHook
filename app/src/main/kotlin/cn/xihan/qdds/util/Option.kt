@@ -531,7 +531,7 @@ data class OptionEntity(
     var currentDisclaimersVersionCode: Int = 0,
     var latestDisclaimersVersionCode: Int = 3,
     var currentOptionVersionCode: Int = 0,
-    var latestOptionVersionCode: Int = 2,
+    var latestOptionVersionCode: Int = 3,
     var advOption: List<SelectedModel> = listOf(
         SelectedModel("闪屏广告", true),
         SelectedModel("GDT广告"),
@@ -621,6 +621,7 @@ data class OptionEntity(
      * @param enableHideAppIcon 启用隐藏应用图标
      * @param enableExportEmoji 启用导出表情包
      * @param enableOldDailyRead 启用旧的每日阅读
+     * @param enableNewFeedDiscovery 启用新的发现
      * @param enableStartCheckingPermissions 启用检查权限
      * @param enableCustomIMEI 启用自定义IMEI
      * @param enableFixDouYinShare 启用修复抖音分享
@@ -635,6 +636,7 @@ data class OptionEntity(
         var enableHideAppIcon: Boolean = false,
         var enableExportEmoji: Boolean = false,
         var enableOldDailyRead: Boolean = false,
+        var enableNewFeedDiscovery: Boolean = false,
         var enableStartCheckingPermissions: Boolean = true,
         var enableCustomIMEI: Boolean = false,
         var qimei: String = "",
@@ -778,6 +780,8 @@ data class OptionEntity(
             SelectedModel(title = "书友圈"),
             SelectedModel(title = "书友榜"),
             SelectedModel(title = "月票金主"),
+            SelectedModel(title = "页面轮播广告"),
+            SelectedModel(title = "顶部轮播广告1|2"),
             SelectedModel(title = "本书看点|中心广告"),
             SelectedModel(title = "浮窗广告"),
             SelectedModel(title = "同类作品推荐"),

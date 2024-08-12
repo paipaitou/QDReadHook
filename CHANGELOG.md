@@ -1,4 +1,30 @@
 # Changelog
+## [3.2.2](https://github.com/xihan123/QDReadHook/compare/v3.2.1...v3.2.2) (2024-08-09)
+
+
+### Features
+
+* **自动化设置:** 新增了`奇妙世界`任务 ([acf59eb](https://github.com/xihan123/QDReadHook/commit/acf59eb72bc88f3de994299236c8b13c0cfeae74))
+* **隐藏控件设置:** `1336`+ 新增隐藏详情页3处轮播广告 ([a604128](https://github.com/xihan123/QDReadHook/commit/a60412806e8269256feb901d7ec58cdb28f648f5))
+
+
+### Miscellaneous
+
+* 更新依赖 ([6fefe28](https://github.com/xihan123/QDReadHook/commit/6fefe2874704fabc64d8680d729ccc5905b329af))
+
+## [3.2.1](https://github.com/xihan123/QDReadHook/compare/v3.2.0...v3.2.1) (2024-07-25)
+
+
+### Features
+
+* **util:** 在Utils中添加classLoader参数 ([c69aff5](https://github.com/xihan123/QDReadHook/commit/c69aff5023c20823de5a8fff2d9ba0e985617a69))
+* **主设置:** 新增`启用新版发现页` ([39e4655](https://github.com/xihan123/QDReadHook/commit/39e4655ac9e732ea5ac03c720b89983d0abaa3ae))
+
+
+### Miscellaneous
+
+* 更新依赖库 ([530f899](https://github.com/xihan123/QDReadHook/commit/530f899728a85fb56e2718e581ba6dd8317dc43d))
+
 ## [3.2.0](https://github.com/xihan123/QDReadHook/compare/v3.1.9...v3.2.0) (2024-07-12)
 
 

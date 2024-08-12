@@ -165,6 +165,11 @@ class HookEntry : IYukiHookXposedInit, KoinComponent {
             oldDailyRead(versionCode, bridge)
         }
 
+        newDiscoveryPage(
+            versionCode = versionCode,
+            enabled = optionEntity.mainOption.enableNewFeedDiscovery
+        )
+
         if (optionEntity.mainOption.enableCustomIMEI) {
             customIMEI(versionCode, bridge)
         }
@@ -252,6 +257,12 @@ class HookEntry : IYukiHookXposedInit, KoinComponent {
                 ),
                 isNeedHideYpjz = optionEntity.viewHideOption.bookDetailOptions.isSelectedByTitle(
                     "月票金主"
+                ),
+                isNeedHideActivityBanner = optionEntity.viewHideOption.bookDetailOptions.isSelectedByTitle(
+                    "页面轮播广告"
+                ),
+                isNeedHideTopBanner = optionEntity.viewHideOption.bookDetailOptions.isSelectedByTitle(
+                    "顶部轮播广告1|2"
                 ),
                 isNeedHideCenterAd = optionEntity.viewHideOption.bookDetailOptions.isSelectedByTitle(
                     "本书看点|中心广告"
@@ -748,6 +759,25 @@ fun PackageParam.oldDailyRead(versionCode: Int, bridge: DexKitBridge) {
 }
 
 /**
+ * 启用新发现页
+ * @since 7.9.354-1296 ~ 1499
+ * @param [versionCode] 版本代码
+ */
+fun PackageParam.newDiscoveryPage(versionCode: Int, enabled: Boolean = false) {
+    when (versionCode) {
+        in 1296..1499 -> {
+            "com.qidian.QDReader.repository.entity.config.AppConfigBean".toClass().method {
+                name = "getNewFeedsDiscover"
+                emptyParam()
+                returnType = IntType
+            }.hook().replaceTo(if (enabled) 1 else 0)
+        }
+
+        else -> "启用新发现页".printlnNotSupportVersion(versionCode)
+    }
+}
+
+/**
  * 启用自定义imei
  * @since 7.9.354-1296 ~ 1499
  * @param [versionCode] 版本代码
@@ -761,7 +791,10 @@ fun PackageParam.customIMEI(versionCode: Int, bridge: DexKitBridge) {
                     searchPackages = listOf("com.tencent.nywbeacon.qimei")
                     matcher {
                         usingStrings = listOf(
-                            "QIMEI_DENGTA", "qimei_v2", "Q_V3", "local_qimei use qimei local: null"
+                            "QIMEI_DENGTA",
+                            "qimei_v2",
+                            "Q_V3",
+                            "local_qimei use qimei local: null"
                         )
                     }
                 }.firstNotNullOfOrNull { classData ->

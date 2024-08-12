@@ -84,6 +84,9 @@ object Path {
     const val GAME_TIME = "/home/log/heartbeat"
     const val CARD_CALL_PAGE = "/argus/api/v2/bookrole/card/callpage"
     const val CARD_CALL = "/argus/api/v2/bookrole/card/call"
+    const val MASCOT_TASK_LIST = "/argus/api/v1/mascot/gettasklist"
+    const val MASCOT_CLOCK_IN = "/argus/api/v1/mascot/clockin"
+    const val MASCOT_TASK_REWARD = "/argus/api/v1/mascot/getreward"
 }
 
 /**
@@ -745,23 +748,26 @@ fun Context.getApplicationApkPath(packageName: String): String {
  * @suppress Generate Documentation
  */
 fun PackageParam.findMethodAndPrint(
-    className: String, printCallStack: Boolean = false, printType: MembersType = MembersType.METHOD
+    className: String,
+    printCallStack: Boolean = false,
+    printType: MembersType = MembersType.METHOD,
+    classLoader: ClassLoader? = appClassLoader
 ) {
     when (printType) {
         MembersType.METHOD -> {
-            className.toClass().method().hookAll().after {
+            className.toClass(classLoader).method().hookAll().after {
                 print(printCallStack)
             }
         }
 
         MembersType.CONSTRUCTOR -> {
-            className.toClass().constructor().hookAll().after {
+            className.toClass(classLoader).constructor().hookAll().after {
                 print(printCallStack)
             }
         }
 
         else -> {
-            with(className.toClass()) {
+            with(className.toClass(classLoader)) {
                 (method().giveAll() + constructor().giveAll()).hookAll {
                     after {
                         print(printCallStack)
