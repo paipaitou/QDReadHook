@@ -98,11 +98,6 @@ fun PackageParam.interceptCheckEnvironment(versionCode: Int) {
     when (versionCode) {
         in 1196..9299 -> {
             intercept(
-                "com.qidian.QDReader.QDApplication",
-                "t"
-            )
-
-            intercept(
                 "a.b",
                 "c",
                 1
