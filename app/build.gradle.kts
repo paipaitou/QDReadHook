@@ -34,8 +34,8 @@ val repo = jgit.repo()
 val commitCount = (repo?.commitCount("refs/remotes/origin/master") ?: 1) + 24
 val latestTag = repo?.latestTag?.removePrefix("v") ?: "3.x.x-SNAPSHOT"
 
-val verCode by extra(560)
-val verName by extra("3.2.3")
+val verCode by extra(commitCount)
+val verName by extra(latestTag)
 val androidTargetSdkVersion by extra(35)
 val androidMinSdkVersion by extra(26)
 
