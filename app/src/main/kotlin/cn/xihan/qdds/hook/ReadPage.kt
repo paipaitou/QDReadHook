@@ -47,7 +47,7 @@ import cn.xihan.qdds.util.Option.updateOptionEntity
  */
 fun PackageParam.redirectReadingPageBackgroundPath(versionCode: Int, bridge: DexKitBridge) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             bridge.findClass {
                 excludePackages = listOf("com")
                 matcher {
@@ -104,7 +104,7 @@ fun PackageParam.readingPageChapterCorrelation(
     bridge: DexKitBridge
 ) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             if (enableShowReaderPageChapterSaveRawPictures) {
                 "com.qd.ui.component.modules.imagepreivew.QDUIGalleryActivity".toClass().method {
                     name = "initView"
@@ -311,7 +311,7 @@ fun PackageParam.readingTimeSpeedFactor(
     versionCode: Int, speedFactor: Int = 5, bridge: DexKitBridge
 ) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
 
             bridge.findClass {
                 excludePackages = listOf("com")
@@ -417,7 +417,7 @@ fun PackageParam.readBookLastPage(
     hideAdView: Boolean = false
 ) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             "com.qidian.QDReader.ui.view.lastpage.LastPageRoleView".toClass().method {
                 param("com.qidian.QDReader.repository.entity.BookLastPage".toClass())
                 returnType = UnitType

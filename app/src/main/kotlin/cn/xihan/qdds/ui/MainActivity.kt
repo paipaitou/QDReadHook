@@ -1724,7 +1724,7 @@ fun Disclaimers(
     onDisagreeClick: () -> Unit = {},
     displayButton: Boolean = true,
 ) {
-    var remainingTime by rememberSavableMutableStateOf(value = 30L)
+    var remainingTime by rememberSavableMutableStateOf(value = 2L)
     val coroutineScope = rememberCoroutineScope()
     val lifecycleOwner = LocalLifecycleOwner.current
     if (displayButton) {

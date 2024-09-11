@@ -31,7 +31,7 @@ import com.highcapable.yukihookapi.hook.type.java.UnitType
  */
 fun PackageParam.customStartImage(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             "com.qidian.QDReader.repository.entity.config.AppConfigBean".toClass().method {
                 name = "getBootWallPapers"
                 emptyParam()
@@ -106,7 +106,7 @@ fun PackageParam.customStartImage(versionCode: Int) {
  */
 fun PackageParam.captureTheOfficialLaunchMapList(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             "com.qidian.QDReader.ui.activity.splash_config.QDSplashConfigFragment".toClass()
                 .method {
                     name = "loadData"
@@ -159,7 +159,7 @@ fun PackageParam.captureTheOfficialLaunchMapList(versionCode: Int) {
  */
 fun PackageParam.customLocalStartImage(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             val list = listOf(
                 "com.qidian.QDReader.ui.activity.SplashActivity\$a",
                 "com.qidian.QDReader.ui.activity.SplashActivity\$cihai"

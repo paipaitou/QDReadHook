@@ -52,7 +52,7 @@ fun PackageParam.autoSignIn(
     versionCode: Int
 ) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             /*
             DexKitBridge.create(appInfo.sourceDir)?.use { bridge ->
                 bridge.findClass {
@@ -125,7 +125,7 @@ fun PackageParam.autoSignIn(
  */
 fun PackageParam.receiveReadingCreditsAutomatically(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             /**
              * 自动领取今日阅读时长积分
              */
@@ -225,7 +225,7 @@ fun PackageParam.receiveReadingCreditsAutomatically(versionCode: Int) {
  */
 fun PackageParam.receivedReadingPageEndHongBaoAutomatically(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             "com.qidian.QDReader.ui.modules.interact.InteractHBContainerView".toClass().method {
                 name = "showContent"
                 emptyParam()
@@ -253,7 +253,7 @@ fun PackageParam.receivedReadingPageEndHongBaoAutomatically(versionCode: Int) {
  */
 fun PackageParam.autoSkipSplash(versionCode: Int) {
     when (versionCode) {
-        in 1196..9299 -> {
+        in 1100..9999 -> {
             "com.qidian.QDReader.ui.activity.SplashActivity".toClass().method {
                 name = "onCreate"
                 param(BundleClass)
