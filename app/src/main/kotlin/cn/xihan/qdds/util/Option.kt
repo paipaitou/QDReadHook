@@ -128,49 +128,53 @@ object Option {
      * 基本路径
      * @suppress Generate Documentation
      */
-    val basePath =
-        "/storage/emulated/${(android.system.Os.getuid() / 100000)}/Download/QDHook/QDReader"
+    val basePath: String by lazy {
+        val appContext = context.get() ?: error("Context not initialized")
+        appContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+            ?.absolutePath?.plus("/QDHook")
+            ?: appContext.filesDir.absolutePath.plus("/QDHook")
+    }
 
     /**
      * 重定向主题路径
      * @suppress Generate Documentation
      */
-    val redirectThemePath = "$basePath/ReaderTheme/"
+    val redirectThemePath by lazy { "$basePath/ReaderTheme/" }
 
     /**
      * 选项路径
      * @suppress Generate Documentation
      */
-    val optionPath = "$basePath/option.json"
+    val optionPath by lazy { "$basePath/option.json" }
 
     /**
      * 日志路径
      * @suppress Generate Documentation
      */
-    val logPath = "$basePath/log.txt"
+    val logPath by lazy { "$basePath/log.txt" }
 
     /**
      * 闪屏图片路径
      * @suppress Generate Documentation
      */
-    val splashPath = "$basePath/Splash/"
+    val splashPath by lazy { "$basePath/Splash/" }
 
     /**
      * 图片路径
      * @suppress Generate Documentation
      */
-    val picturesPath = "$basePath/Pictures"
+    val picturesPath by lazy { "$basePath/Pictures" }
 
     /**
      * 音频路径
      * @suppress Generate Documentation
      */
-    val audioPath = "$basePath/Audio/"
+    val audioPath by lazy { "$basePath/Audio/" }
 
     /**
      * 字体路径
      */
-    val fontPath = "$basePath/Font/"
+    val fontPath by lazy { "$basePath/Font/" }
 
     fun initialize(context: Context) {
         Option.context = WeakReference(context)
